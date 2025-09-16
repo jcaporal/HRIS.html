@@ -157,20 +157,36 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <p class="text-gray-700 leading-relaxed text-xs italic mt-2">Note: All savings figures are based on conservative assumptions for illustrative purposes. A formal study would be required to validate these numbers.</p>
                         </div>
+                        <p class="text-gray-700 leading-relaxed text-xs italic mt-2">
+                          Note: The savings figures and financial model are based on a series of conservative assumptions for illustrative purposes. A formal study would be required to validate these numbers. Additionally, the financial model simplifies costs by treating them as fixed across all vendors. However, since BambooHR and Workday typically charge on a per-employee basis, their costs would rise as headcount grows. Factoring this in would further increase their annual costs, deepen the negative NPV, and extend the ROI timeline.
+                        </p>
                     </div>
 
                     <div>
                         <h4 class="font-bold text-gray-900 mb-2">3. NPV & ROI Analysis</h4>
-                        <ul class="list-disc list-inside ml-4 mb-4 text-sm text-gray-700">
-                            <li>The NPV analysis uses a <strong>10-year time horizon</strong> and a <strong>10% discount rate</strong>, which is a standard for medium-risk IT investments.</li>
-                            <li>Since all NPVs are negative, this model shows that none of the options achieve a positive ROI within this 10-year period.</li>
-                            <li>This highlights that the primary value of these systems is not in direct financial return, but in strategic benefits like <strong>global compliance, scalability, data integrity, and a seamless employee experience</strong>.</li>
-                        </ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-center">
+                            <!-- Time Horizon Card -->
+                            <div class="p-4 rounded-lg shadow-sm border" style="background-color: #e83760;">
+                                <h5 class="text-lg font-bold mb-1 text-white">Time Horizon</h5>
+                                <p class="text-sm text-white">10-Year View with a 10% discount rate.</p>
+                            </div>
+                            <!-- ROI Card -->
+                            <div class="p-4 rounded-lg shadow-sm border" style="background-color: #ffda3c;">
+                                <h5 class="text-lg font-bold mb-1" style="color: #1d364e;">ROI</h5>
+                                <p class="text-sm text-gray-700">No positive ROI within this 10-year period.</p>
+                            </div>
+                            <!-- Strategic Value Card -->
+                            <div class="p-4 rounded-lg shadow-sm border text-center" style="background-color: #50b3db;">
+                                <h5 class="text-lg font-bold mb-1 text-white">Key Value</h5>
+                                <p class="text-sm text-white">Found in strategic benefits (compliance, scalability, data integrity, UX).</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p class="text-gray-700 leading-relaxed text-sm italic mt-4 text-center">Note: The analysis above is based on the available features and product offerings from each vendor and is not a direct "apples-to-apples" comparison.</p>
+                <p class="text-gray-700 leading-relaxed text-sm italic mt-8 text-left" style="font-family: 'Poppins', sans-serif;">
+                    Note: The analysis above is based on the available features and product offerings from each vendor and is not a direct "apples-to-apples" comparison.
+                </p>
             </section>
 
         </main>
