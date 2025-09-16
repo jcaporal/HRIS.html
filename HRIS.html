@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRIS Financial Evaluation Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', sans-serif;
+            background-color: #f2efeb;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        .header-bg {
+            background-color: #1d364e;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f2efeb] p-6 md:p-12 lg:p-16">
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header-bg text-white p-8 rounded-t-3xl">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">HRIS Financial Evaluation Report</h1>
+            <p class="text-gray-300">A detailed analysis of costs, savings, and NPV for vendor options.</p>
+        </header>
+
+        <main class="p-6 md:p-10">
+            <!-- Cost-Benefit Analysis Table -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-[#1d364e] mb-4">1. Cost-Benefit Analysis & Projections (10-Year View)</h2>
+                <div class="table-container bg-white rounded-2xl shadow-md mb-6">
+                    <table class="min-w-full text-left text-gray-600 text-sm">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="py-4 px-4 font-semibold text-gray-800">Option</th>
+                                <th class="py-4 px-4 font-semibold text-gray-800">Annual Cost</th>
+                                <th class="py-4 px-4 font-semibold text-gray-800">One-Time Cost</th>
+                                <th class="py-4 px-4 font-semibold text-gray-800">Projected Annual Savings</th>
+                                <th class="py-4 px-4 font-semibold text-gray-800">ROI Timeline</th>
+                                <th class="py-4 px-4 font-semibold text-gray-800">NPV (10-Year)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4 font-medium text-gray-700">Sprout</td>
+                                <td class="py-4 px-4">~$96,307</td>
+                                <td class="py-4 px-4">N/A</td>
+                                <td class="py-4 px-4">Minimal</td>
+                                <td class="py-4 px-4">No positive ROI</td>
+                                <td class="py-4 px-4">-$662,130</td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4 font-medium text-gray-700">BambooHR</td>
+                                <td class="py-4 px-4">~$124,331</td>
+                                <td class="py-4 px-4">~$25,000</td>
+                                <td class="py-4 px-4">~$1,750</td>
+                                <td class="py-4 px-4">No positive ROI</td>
+                                <td class="py-4 px-4">-$787,000</td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4 font-medium text-gray-700">Workday Phased (HCM + Timekeeping)</td>
+                                <td class="py-4 px-4">~$325,000</td>
+                                <td class="py-4 px-4">~$225,000</td>
+                                <td class="py-4 px-4">~$2,250</td>
+                                <td class="py-4 px-4">No positive ROI</td>
+                                <td class="py-4 px-4">-$2,125,000</td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4 font-medium text-gray-700">Workday HCM+T+P</td>
+                                <td class="py-4 px-4">~$420,000</td>
+                                <td class="py-4 px-4">~$300,000</td>
+                                <td class="py-4 px-4">~$3,600</td>
+                                <td class="py-4 px-4">No positive ROI</td>
+                                <td class="py-4 px-4">-$2,760,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- NPV Chart -->
+            <section class="mb-8">
+                <h3 class="text-xl font-bold text-[#1d364e] mb-4">NPV Projection (10-Year View)</h3>
+                <div class="h-64 md:h-96">
+                    <canvas id="npvChart"></canvas>
+                </div>
+            </section>
+            
+            <!-- Methodology and Insights -->
+            <section>
+                <h3 class="text-xl font-bold text-[#1d364e] mb-4 mt-6">Methodology & Financial Insights</h3>
+                <div class="bg-gray-50 rounded-2xl p-6">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-2">1. Cost Estimates</h4>
+                        <ul class="list-disc list-inside ml-4 mb-4 text-sm text-gray-700">
+                            <li><strong>BambooHR</strong> and <strong>Sprout</strong> costs are based on actual proposals and current spending.</li>
+                            <li><strong>Workday</strong> figures are based on publicly available benchmark data and third-party reports.</li>
+                            <li>Final pricing for Workday will be validated once an official proposal is received.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-2">2. Projected Annual Savings</h4>
+                        <p class="text-gray-700 leading-relaxed text-sm">
+                            The savings are based on a conservative estimate of reduced manual workload across HRIS, Payroll, and Business Intelligence (BI) teams. To achieve a more precise calculation, a <strong>time and motion study</strong> would be required to quantify the specific hours saved for each task. These hours would then be monetized using the <strong>average salary</strong> of the team members involved, providing a more accurate and defendable figure for annual savings. This granular approach would lead to a more compelling business case for the investment.
+                        </p>
+                        <div class="mt-4">
+                            <h5 class="font-bold text-gray-800 mb-2">Granular Breakdown of Projected Savings</h5>
+                            <ul class="list-disc list-inside ml-4 mb-4 text-sm text-gray-700">
+                                <li><strong>Baseline Savings (HRIS + Payroll + BI Teams):</strong>
+                                    <ul class="list-circle list-inside ml-6 mt-1 text-gray-600">
+                                        <li>Manual workload reduction: 20 hours/month</li>
+                                        <li>Estimated value: $5/hour</li>
+                                        <li>Calculation: (20 hours/month) x (12 months) x ($5/hour) = <strong>$1,200</strong></li>
+                                    </ul>
+                                </li>
+                                <li><strong>Indirect Savings (Adjusted Upward to ~$15,000):</strong>
+                                    <ul class="list-circle list-inside ml-6 mt-1 text-gray-600">
+                                        <li>Avoided time-to-payroll corrections from the <strong>Payroll Team</strong>: Estimated at <strong>$5,000</strong></li>
+                                        <li>Avoided data remediation from the <strong>BI, Data Science, and Workforce Management (WFM)</strong> teams: Estimated at <strong>$7,000</strong></li>
+                                        <li>Reduced errors and compliance risks (e.g., penalty avoidance, productivity gains): Estimated at <strong>$1,800</strong></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="text-gray-700 leading-relaxed text-xs italic mt-2">Note: All savings figures are based on conservative assumptions for illustrative purposes. A formal study would be required to validate these numbers.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-2">3. NPV & ROI Analysis</h4>
+                        <ul class="list-disc list-inside ml-4 mb-4 text-sm text-gray-700">
+                            <li>The NPV analysis uses a <strong>10-year time horizon</strong> and a <strong>10% discount rate</strong>, which is a standard for medium-risk IT investments.</li>
+                            <li>Since all NPVs are negative, this model shows that none of the options achieve a positive ROI within this 10-year period.</li>
+                            <li>This highlights that the primary value of these systems is not in direct financial return, but in strategic benefits like <strong>global compliance, scalability, data integrity, and a seamless employee experience</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed text-sm italic mt-4 text-center">Note: The analysis above is based on the available features and product offerings from each vendor and is not a direct "apples-to-apples" comparison.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('npvChart').getContext('2d');
+            const data = {
+                labels: ['Year 0', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10'],
+                datasets: [{
+                        label: 'Sprout',
+                        data: [0, -87552, -167144, -239243, -305103, -365613, -421526, -473556, -522262, -568102, -611447],
+                        backgroundColor: '#e83760',
+                        borderColor: '#e83760',
+                        fill: false,
+                        tension: 0.2
+                    },
+                    {
+                        label: 'BambooHR',
+                        data: [-25000, -136437, -241571, -336065, -420786, -496739, -564998, -626573, -682390, -733221, -780300],
+                        backgroundColor: '#a2c62c',
+                        borderColor: '#a2c62c',
+                        fill: false,
+                        tension: 0.2
+                    },
+                    {
+                        label: 'Workday Phased',
+                        data: [-225000, -518909, -781436, -1016624, -1227845, -1417534, -1587847, -1740523, -1877685, -2001150, -2112460],
+                        backgroundColor: '#50b3db',
+                        borderColor: '#50b3db',
+                        fill: false,
+                        tension: 0.2
+                    },
+                    {
+                        label: 'Workday HCM+T+P',
+                        data: [-300000, -678954, -1025595, -1341640, -1629856, -1892839, -2133036, -2352601, -2553415, -2737220, -2905660],
+                        backgroundColor: '#1d364e',
+                        borderColor: '#1d364e',
+                        fill: false,
+                        tension: 0.2
+                    }
+                ]
+            };
+
+            const options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                family: 'Poppins'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                return `Year ${context[0].label.replace('Year ', '')}`;
+                            },
+                            label: function(context) {
+                                const labels = {
+                                    'Sprout': 'Sprout',
+                                    'BambooHR': 'BambooHR',
+                                    'Workday Phased': 'Workday Phased',
+                                    'Workday HCM+T+P': 'Workday HCM+T+P'
+                                };
+                                let label = labels[context.dataset.label] || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD',
+                                        maximumFractionDigits: 0
+                                    }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            font: {
+                                size: 14,
+                                family: 'Poppins'
+                            }
+                        },
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 12,
+                                family: 'Poppins'
+                            },
+                            color: '#1d364e'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Cumulative NPV (USD)',
+                            font: {
+                                size: 14,
+                                family: 'Poppins'
+                            }
+                        },
+                        beginAtZero: false,
+                        grid: {
+                            color: '#d1d5db'
+                        },
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return new Intl.NumberFormat('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                    notation: 'compact',
+                                    compactDisplay: 'short'
+                                }).format(value);
+                            },
+                            font: {
+                                size: 12,
+                                family: 'Lora'
+                            },
+                            color: '#1d364e'
+                        }
+                    }
+                }
+            };
+
+            const npvChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: options
+            });
+        });
+    </script>
+</body>
+
+</html>
